@@ -19,7 +19,7 @@ class ElementList(dict):
         return '\n'.join([str(self[element]) for element in self])
 
     def reverse(self):
-        return [self[i] for i in range(len(self) - 1, 0, -1)]
+        return ElementList(*[self[i] for i in list(self)[::-1]])
 
     def get_el(self, el) -> Element:
         return self[el]

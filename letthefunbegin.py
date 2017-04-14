@@ -8,7 +8,7 @@ def ichsuche(allel, inpud):
     loesung = []
     hit = False
     while inpud != "":
-        for element in allel[::-1]:
+        for element in allel.reverse():
             if element == inpud[:len(element)].title():
                 loesung.append(element)
                 inpud = inpud[len(element):]
@@ -75,9 +75,9 @@ def showloesung(loesung):
         for l in loesung.values():
             print(l)
             tempwidth += 24
-            # alles schwarz
+            # create rectangle
             canvas.create_rectangle(tempwidth - 12, 40, tempwidth + 12, 60, fill=l.color)
-            # schrift
+            # ceate text
             canvas.create_text(tempwidth, cheight / 2, text=l.short, font=("Century Gothic", 11))
 
     # button mit showNumbers... Wenn an dann sollen die Zahlen des Elements unter der Box erscheinen
