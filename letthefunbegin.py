@@ -4,7 +4,7 @@ from getallsymbole import *
 characters = re.compile(r'[^abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ]')
 
 
-def ichsuche(allel, inpud):
+def ichsuche(allel, inpud, loesung):
     # loesung = []
     # hit = False
     # while inpud != "":
@@ -24,13 +24,13 @@ def ichsuche(allel, inpud):
 
     if inpud == "":
         return loesung
-    for i in kurz:
-        i = i.lower()
+    for i in allel:
+        i = i.short.lower()
         ilen = len(i)
         if inpud[:ilen] == i:
             loesung.append(i)
             print(inpud[ilen:])
-            hier = ichsuche(kurz, inpud[ilen:], loesung)
+            hier = ichsuche(allel, inpud[ilen:], loesung)
             if hier != "nothing found":
                 return hier
             loesung = loesung[:len(loesung) - 1]
@@ -51,11 +51,22 @@ def take_care_of_inpud(inpud) -> str:
 def letthefunbegin(allel, inpud):
     inpud = take_care_of_inpud(inpud.get())
     print(inpud)
-    loesung
-    loesung = ichsuche(allel, inpud)
+    print(allel.getallsymbole())
+    loesung = []
+    loesung = ichsuche(allel, inpud,loesung)
     print(loesung)
-    if not isinstance(loesung, str):
-        loesung = ElementList(*[allel[l] for l in [l.title() for l in loesung]])  # get element by its short from dict
+    l = 0
+    if loesung != "nothing found":
+        for i in loesung:
+            print("VIELLECIHT")
+            for e in allel:
+                print(e.short)
+                if e.short == i.title():
+                    loesung[l] = e
+                    print("JAAAA")
+                    break
+            l = l+1
+    print(loesung)
     showloesung(loesung)
 
 
@@ -73,11 +84,12 @@ def showloesung(loesung):
     if isinstance(loesung, str):
         canvas.create_text(cwidth / 2, cheight / 2, text="nothing found", font=("Century Gothic", 11))
     else:  # make method for ElementList from the code below
-        for l in loesung.values():
-            print(l)
-            tempwidth += 24
-            # create rectangle
-            canvas.create_rectangle(tempwidth - 12, 40, tempwidth + 12, 60, fill=l.color)
+        for l in loesung:
+            if isinstance(l, Element):
+                print(l)
+                tempwidth += 24
+                # create rectangle
+                canvas.create_rectangle(tempwidth - 12, 40, tempwidth + 12, 60, fill=l.color)
             # ceate text
             canvas.create_text(tempwidth, cheight / 2, text=l.short, font=("Century Gothic", 11))
 

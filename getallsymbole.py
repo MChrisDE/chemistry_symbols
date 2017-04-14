@@ -13,7 +13,7 @@ class ElementList(dict):
     def __init__(self, *args):
         self.master = None
         for arg in args:
-            self[arg.short] = arg
+            self[arg] = arg
 
     def __str__(self):
         return '\n'.join([str(self[element]) for element in self])
