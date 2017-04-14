@@ -18,11 +18,8 @@ class ElementList(dict):
     def __str__(self):
         return '\n'.join([str(self[element]) for element in self])
 
-    def __getitem__(self, item):
-        buffer=[]
-        for i in range(len(self),0):
-
-
+    def reverse(self):
+        return [self[i] for i in range(len(self) - 1, 0, -1)]
 
     def get_el(self, el) -> Element:
         return self[el]
