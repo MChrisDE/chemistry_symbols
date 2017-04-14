@@ -7,7 +7,7 @@ print(allel)
 
 master = Tk()
 master.wm_title("CHEMIE IST COOL")
-
+p
 titel = Label(master, text="CHEMIE IST COOL", font=("Century Gothic", 11))
 titel.grid(row=0, column=0, padx=40, pady=5)
 

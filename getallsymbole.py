@@ -1,5 +1,5 @@
 class Element:
-    def __init__(self, *args):
+    def __init__(self, *args, **kwargs):
         self.n = args[0].replace("\t", "")  # number (of protons)
         self.short = args[1]  # symbol
         self.name = args[2]  # is obvious

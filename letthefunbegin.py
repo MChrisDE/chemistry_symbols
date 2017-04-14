@@ -1,42 +1,42 @@
 from tkinter import *
-from getallsymbole import ElementList
+from getallsymbole import *
 
 characters = re.compile(r'[^abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ]')
 
 
 def ichsuche(allel, inpud):
-    loesung = []
-    hit = False
-    while inpud != "":
-        for element in allel.reverse():
-            if element == inpud[:len(element)].title():
-                loesung.append(element)
-                inpud = inpud[len(element):]
-                hit = True
-                break
-            else:
-                continue
-        if hit != True:
-            loesung.append(inpud[0])
-            inpud = inpud[1:]
-        hit = False
-    return loesung
+    # loesung = []
+    # hit = False
+    # while inpud != "":
+    #     for element in allel.reverse():
+    #         if element == inpud[:len(element)].title():
+    #             loesung.append(element)
+    #             inpud = inpud[len(element):]
+    #             hit = True
+    #             break
+    #         else:
+    #             continue
+    #     if hit != True:
+    #         loesung.append(inpud[0])
+    #         inpud = inpud[1:]
+    #     hit = False
+    # return loesung
 
-                # if inpud == "":
-                #     return loesung
-                # for i in kurz:
-                #     i = i.lower()
-                #     ilen = len(i)
-                #     if inpud[:ilen] == i:
-                #         loesung.append(i)
-                #         print(inpud[ilen:])
-                #         hier = ichsuche(kurz, inpud[ilen:], loesung)
-                #         if hier != "nothing found":
-                #             return hier
-                #         loesung = loesung[:len(loesung) - 1]
-                # print("nothing found")
-                #
-                # return "nothing found"
+    if inpud == "":
+        return loesung
+    for i in kurz:
+        i = i.lower()
+        ilen = len(i)
+        if inpud[:ilen] == i:
+            loesung.append(i)
+            print(inpud[ilen:])
+            hier = ichsuche(kurz, inpud[ilen:], loesung)
+            if hier != "nothing found":
+                return hier
+            loesung = loesung[:len(loesung) - 1]
+    print("nothing found")
+
+    return "nothing found"
 
 
 def take_care_of_inpud(inpud) -> str:
@@ -51,6 +51,7 @@ def take_care_of_inpud(inpud) -> str:
 def letthefunbegin(allel, inpud):
     inpud = take_care_of_inpud(inpud.get())
     print(inpud)
+    loesung
     loesung = ichsuche(allel, inpud)
     print(loesung)
     if not isinstance(loesung, str):
