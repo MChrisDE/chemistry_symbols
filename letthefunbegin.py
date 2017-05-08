@@ -90,7 +90,7 @@ def showloesung(loesung):
                 tempwidth += 24
                 # create rectangle
                 canvas.create_rectangle(tempwidth - 12, 40, tempwidth + 12, 60, fill=l.color)
-            # ceate text
+            # create text
             canvas.create_text(tempwidth, cheight / 2, text=l.short, font=("Century Gothic", 11))
 
     # button mit showNumbers... Wenn an dann sollen die Zahlen des Elements unter der Box erscheinen
