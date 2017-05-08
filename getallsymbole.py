@@ -46,6 +46,6 @@ class ElementList(dict):
 
 
 def get_all() -> ElementList:
-    with open("db.csv") as f:  # db.csv for 8-bit colors, db2.csv for 12-bit colors
+    with open("db.csv") as f:
         lines = f.read().splitlines()
     return ElementList(*[Element(*line.split(',')) for line in lines])
